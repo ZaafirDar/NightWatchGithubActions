@@ -1,0 +1,146 @@
+name: Mobile-Test-Automation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Execute-Android-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Verify jq installation
+        run: jq --version
+
+      - name: Verify Repository Structure
+        run: |
+          echo "Verifying repository structure..."
+          pwd
+          ls -la nightwatch/apps/
+      
+      - name: Setup Appium
+        run: |
+          echo "Setting up Appium..."
+          npm install -g appium@next --unsafe-perm=true --allow-root
+          appium driver install uiautomator2
+          appium -v
+          ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
+      
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Nightwatch
+        run: npm install -g nightwatch
+
+      - name: Start Emulator, Verify Emulator, and Run Android Tests
+        uses: reactivecircus/android-emulator-runner@v2.24.0
+        with:
+          api-level: 29
+          profile: Galaxy Nexus
+          disable-animations: false
+          script: |
+            echo "Configuring emulator to auto-accept alerts..."
+            adb shell settings put global development_settings_enabled 1
+            adb shell settings put global show_alert_window 1
+            adb shell settings put global auto_accept_alerts 1
+            echo "Installing app on emulator..."
+            adb install nightwatch/apps/android.wdio.native.app.v1.0.8.apk
+            echo "Launching the app on the emulator..."
+            adb shell am start -n com.wdiodemoapp.MainActivity
+            npm run androidTest        
+
+      - name: Upload Nightwatch Test Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-test-report
+          path: tests_output/nightwatch-html-report/index.html
+
+      - name: Upload Test Failure Screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-screenshots
+          path: tests_output/screenshots
+
+      # Stop the Appium server at the end of the job
+      - name: Stop Appium Server
+        run: |
+          echo "Stopping Appium server..."
+          pkill -f appium
+
+  Execute-iOS-Tests:
+    runs-on: macos-latest
+    needs: Execute-Android-Tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Display Available Xcode Versions
+        run: ls /Applications | grep Xcode
+      
+      - name: Select Default Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode.app
+      
+      - name: Display Selected Xcode Version
+        run: xcodebuild -version
+      
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Install Nightwatch
+        run: npm install -g nightwatch
+        
+      - name: Start Appium
+        run: |
+          npm install -g appium@next --unsafe-perm=true --allow-root
+          appium driver update xcuitest
+          ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload > appium.log &
+      
+      - name: Extract IPA
+        run: |
+          unzip nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.zip -d nightwatch/apps
+      
+      - name: Verify Repository Structure
+        run: |
+          echo "Verifying repository structure..."
+          pwd
+          ls -la nightwatch/apps/  
+
+      - name: Boot iPhone 15 Pro Simulator
+        run: |
+          echo "Booting iPhone 15 Pro Simulator..."
+          xcrun simctl boot CFE57F9D-61FA-4D71-8914-D30AE8B5426F
+          xcrun simctl install CFE57F9D-61FA-4D71-8914-D30AE8B5426F /nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.app
+      
+      - name: Run iOS Tests
+        run: npm run iOSTest
+      
+      - name: Capture Simulator Screenshot
+        if: failure()
+        run: |
+          mkdir -p screenshots
+          xcrun simctl io CFE57F9D-61FA-4D71-8914-D30AE8B5426F screenshot screenshots/screenshot.png
+      
+      - name: Upload iOS Test Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-test-report
+          path: tests_output/nightwatch-html-report/index.html
+      
+      - name: Upload iOS Test Failure Screenshots
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-screenshots
+          path: screenshots
+      
+      - name: Delete IPA
+        run: rm -rf /nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8

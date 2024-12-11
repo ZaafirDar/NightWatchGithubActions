@@ -178,14 +178,11 @@ module.exports = {
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
           app: `${__dirname}/nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.app`,
-           //local app setup
-         /// app:`/Users/hamzaahmadkhanniazi/Downloads/arena_mobile_app-dev.app`,
           adbExecTimeout: 1200000, // Increased timeout value
           uiautomator2ServerInstallTimeout: 1200000,
           XCUITESTServerInstallTimeout: 1200000,
-          // chromedriver executable to use for testing web-views in hybrid apps
           chromedriverExecutable: `${__dirname}/chromedriver-mobile/chromedriver.exe`,
-          bundleId: 'com.arenaclub.mobile.dev',
+          bundleId: 'com.simulator.wdio.native.app.v1.0.8',
           newCommandTimeout: 1200000,
         },
         screenshots: {
