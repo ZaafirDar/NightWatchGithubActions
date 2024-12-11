@@ -52,7 +52,7 @@ jobs:
             echo "Installing app on emulator..."
             adb install nightwatch/apps/androidSample.apk
             echo "Launching the app on the emulator..."
-            adb shell am start -n com.wdiodemoapp.MainActivity
+            adb shell am start -n .MainActivity
             npm run androidTest        
 
       - name: Upload Nightwatch Test Report
