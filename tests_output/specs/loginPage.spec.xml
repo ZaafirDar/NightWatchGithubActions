@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="specs.loginPage.spec"
+    errors="1" failures="0" hostname="" id="" package="specs" skipped="1"
+    tests="0" time="0.001000" timestamp="">
+  
+
+  
+    <system-err>
+       An error occurred while creating a new Appium Server session: [WebDriverError] An unknown server-side error occurred while processing the command. Original error: Cannot start the &#39;com.wdiodemoapp&#39; application. Consider checking the driver&#39;s troubleshooting documentation. Original error: Error executing adbExec. Original error: &#39;Command &#39;/Users/zaafirdar/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am start -W -n com.wdiodemoapp/com.wdiodemoapp/.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000&#39; exited with code 1&#39;; Command output: Stopping: com.wdiodemoapp
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.wdiodemoapp/com.wdiodemoapp/.MainActivity }
+Error type 3
+Error: Activity class {com.wdiodemoapp/com.wdiodemoapp/.MainActivity} does not exist.
+
+    </system-err>
+  
+
+    
+    <error message="An error occurred while creating a new Appium Server session: [WebDriverError] An unknown server-side error occurred while processing the command. Original error: Cannot start the &#39;com.wdiodemoapp&#39; application. Consider checking the driver&#39;s troubleshooting documentation. Original error: Error executing adbExec. Original error: &#39;Command &#39;/Users/zaafirdar/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am start -W -n com.wdiodemoapp/com.wdiodemoapp/.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000&#39; exited with code 1&#39;; Command output: Stopping: com.wdiodemoapp
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.wdiodemoapp/com.wdiodemoapp/.MainActivity }
+Error type 3
+Error: Activity class {com.wdiodemoapp/com.wdiodemoapp/.MainActivity} does not exist.
+"><![CDATA[
+      WebDriverError: An error occurred while creating a new Appium Server session: [WebDriverError] An unknown server-side error occurred while processing the command. Original error: Cannot start the &#39;com.wdiodemoapp&#39; application. Consider checking the driver&#39;s troubleshooting documentation. Original error: Error executing adbExec. Original error: &#39;Command &#39;/Users/zaafirdar/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am start -W -n com.wdiodemoapp/com.wdiodemoapp/.MainActivity -S -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -f 0x10200000&#39; exited with code 1&#39;; Command output: Stopping: com.wdiodemoapp
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.wdiodemoapp/com.wdiodemoapp/.MainActivity }
+Error type 3
+Error: Activity class {com.wdiodemoapp/com.wdiodemoapp/.MainActivity} does not exist.
+
+    at Object.throwDecodedError (/Users/zaafirdar/Documents/NightWatch JS with Github Action/NightWatchGithubActions/node_modules/selenium-webdriver/lib/error.js:521:15)
+    at parseHttpResponse (/Users/zaafirdar/Documents/NightWatch JS with Github Action/NightWatchGithubActions/node_modules/selenium-webdriver/lib/http.js:514:13)
+    at Executor.execute (/Users/zaafirdar/Documents/NightWatch JS with Github Action/NightWatchGithubActions/node_modules/selenium-webdriver/lib/http.js:446:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      ]]></error>  
+
+  
+    
+    <testcase
+      name="should be able to verify notification Icon on Home Screen" classname="specs.loginPage.spec">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

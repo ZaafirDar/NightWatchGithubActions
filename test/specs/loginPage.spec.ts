@@ -7,10 +7,10 @@ describe('Login Page E2E Test', function() {
         platform = browser.options?.desiredCapabilities?.platformName?.toLowerCase() === 'android' ? 'android' : 'ios';
     });
 
-    it('should be able to verify notification Icon on Home Screen', async () => {  
+    it('should be able to traverse to login screen', async () => {  
         const loginPage = new LoginPage(platform);
-        await loginPage.loginToApp();
-        await browser.pause(20000);
+        await loginPage.tapLogin()
+        await browser.pause(5000);
         await app.end();
     });
 });

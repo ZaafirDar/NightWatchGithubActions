@@ -111,11 +111,11 @@ module.exports = {
           autoGrantPermissions: true,  // Automatically grants permissions
           autoAcceptAlerts: true, 
           // Android Virtual Device to run tests on
-          avd: 'test',
+          avd: 'sdk_gphone64_arm64',
           enablemultiwindows: true,
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
-          app: `${__dirname}nightwatch/apps/android.wdio.native.app.v1.0.8.apk`,
+          app: `${__dirname}/nightwatch/apps/androidSample.apk`,
           //local app setup
           appActivity: 'com.wdiodemoapp.MainActivity',
           adbExecTimeout: 1200000, // Increased timeout value
@@ -146,7 +146,7 @@ module.exports = {
           automationName: 'UiAutomator2',
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
-          app: `${__dirname}nightwatch/apps/android.wdio.native.app.v1.0.8.apk`,
+          app: `${__dirname}/nightwatch/apps/android.wdio.native.app.v1.0.8.apk`,
           appPackage: 'org.wikipedia',
           appActivity: 'org.wikipedia.main.MainActivity',
           appWaitActivity: 'org.wikipedia.onboarding.InitialOnboardingActivity',
@@ -177,12 +177,12 @@ module.exports = {
           autoGrantPermissions: true, 
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
-          app: `${__dirname}/nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.app`,
+          app: `${__dirname}/nightwatch/apps/iOSSampleApp.app`,
           adbExecTimeout: 1200000, // Increased timeout value
           uiautomator2ServerInstallTimeout: 1200000,
           XCUITESTServerInstallTimeout: 1200000,
           chromedriverExecutable: `${__dirname}/chromedriver-mobile/chromedriver.exe`,
-          bundleId: 'com.simulator.wdio.native.app.v1.0.8',
+          bundleId: 'org.reactjs.native.example.wdiodemoapp',
           newCommandTimeout: 1200000,
         },
         screenshots: {

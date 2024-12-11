@@ -2,11 +2,11 @@
 "android": {
    "emailLocator":"//android.widget.EditText[@resource-id='loginScreenEmail']",
     "passwordLocator":"//android.widget.EditText[@resource-id='loginScreenPassword']",
-    "loginBtnLocator":"//android.view.ViewGroup[@content-desc='Log In']"
+    "loginBtnLocator":"//android.widget.TextView[@text='Login']"
 },
 "ios": {
     "emailLocator": "//XCUIElementTypeTextField[@name='loginScreenEmail']",
     "passwordLocator": "//XCUIElementTypeSecureTextField[@name='loginScreenPassword']",
-    "loginBtnLocator": "//XCUIElementTypeOther[@name='loginScreen-LoginButton']"
+    "loginBtnLocator": "//XCUIElementTypeButton[@name='Login']"
 }
 }
