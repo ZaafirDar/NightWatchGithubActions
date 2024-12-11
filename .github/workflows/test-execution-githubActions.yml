@@ -50,7 +50,7 @@ jobs:
             adb shell settings put global show_alert_window 1
             adb shell settings put global auto_accept_alerts 1
             echo "Installing app on emulator..."
-            adb install nightwatch/apps/android.wdio.native.app.v1.0.8.apk
+            adb install nightwatch/apps/androidSample.apk
             echo "Launching the app on the emulator..."
             adb shell am start -n com.wdiodemoapp.MainActivity
             npm run androidTest        
@@ -105,7 +105,7 @@ jobs:
       
       - name: Extract IPA
         run: |
-          unzip nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.zip -d nightwatch/apps
+          unzip nightwatch/apps/iOSSampleApp.zip -d nightwatch/apps
       
       - name: Verify Repository Structure
         run: |
@@ -117,7 +117,7 @@ jobs:
         run: |
           echo "Booting iPhone 15 Pro Simulator..."
           xcrun simctl boot CFE57F9D-61FA-4D71-8914-D30AE8B5426F
-          xcrun simctl install CFE57F9D-61FA-4D71-8914-D30AE8B5426F /nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8.app
+          xcrun simctl install CFE57F9D-61FA-4D71-8914-D30AE8B5426F nightwatch/apps/iOSSampleApp.app
       
       - name: Run iOS Tests
         run: npm run iOSTest
@@ -143,4 +143,4 @@ jobs:
           path: screenshots
       
       - name: Delete IPA
-        run: rm -rf /nightwatch/apps/ios.simulator.wdio.native.app.v1.0.8
+        run: rm -rf nightwatch/apps/iOSSampleApp.app
