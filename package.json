@@ -1,0 +1,29 @@
+{
+  "name": "nightwatch-appium-mobile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "androidTest": "npx nightwatch test/specs/loginPage.spec.ts --env app.android.emulator",
+    "iOSTest": "npx nightwatch test/specs/loginPage.spec.ts --env app.ios.simulator",
+    "LocalAndroidTest": "npx nightwatch test/specs/loginPage.spec.ts --env app.android.emulator"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nightwatch/mobile-helper": "^0.1.12",
+    "@swc/core": "^1.4.11",
+    "appium": "^2.5.1",
+    "appium-uiautomator2-driver": "^3.0.5",
+    "appium-xcuitest-driver": "^7.9.1",
+    "nightwatch": "^3.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "nightwatch-appium-mobile": "file:",
+    "puppeteer": "^22.6.3"
+  }
+}
