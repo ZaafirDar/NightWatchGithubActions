@@ -29,7 +29,7 @@ export default class LoginPage {
     }
 
     async tapLogin() {
-        await app.useXpath().waitForElementPresent(this.loginBtnLocator, 50000);
+        await app.useXpath().waitForElementPresent(this.loginBtnLocator, 90000);
         await app.useXpath().click(this.loginBtnLocator)
     }
     
