@@ -177,7 +177,7 @@ module.exports = {
           autoGrantPermissions: true, 
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
-          app: `${__dirname}/nightwatch/apps/iOSSampleApp.app`,
+          app: `${__dirname}/nightwatch/apps/wdiodemoapp.app`,
           adbExecTimeout: 1200000, // Increased timeout value
           uiautomator2ServerInstallTimeout: 1200000,
           XCUITESTServerInstallTimeout: 1200000,
