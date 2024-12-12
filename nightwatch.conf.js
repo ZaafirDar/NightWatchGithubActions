@@ -182,7 +182,6 @@ module.exports = {
           uiautomator2ServerInstallTimeout: 1200000,
           XCUITESTServerInstallTimeout: 1200000,
           chromedriverExecutable: `${__dirname}/chromedriver-mobile/chromedriver.exe`,
-          bundleId: 'org.reactjs.native.example.wdiodemoapp',
           newCommandTimeout: 1200000,
         },
         screenshots: {
