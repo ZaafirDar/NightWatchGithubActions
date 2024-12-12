@@ -111,7 +111,7 @@ module.exports = {
           autoGrantPermissions: true,  // Automatically grants permissions
           autoAcceptAlerts: true, 
           // Android Virtual Device to run tests on
-          avd: 'sdk_gphone64_arm64',
+          avd: 'test',
           enablemultiwindows: true,
           // While Appium v1 supports relative paths, it's more safe to use absolute paths instead.
           // Appium v2 does not support relative paths.
