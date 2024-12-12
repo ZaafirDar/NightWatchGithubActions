@@ -116,7 +116,7 @@ jobs:
         run: |
           echo "Booting iPhone 15 Pro Simulator..."
           xcrun simctl boot CFE57F9D-61FA-4D71-8914-D30AE8B5426F
-          xcrun simctl install CFE57F9D-61FA-4D71-8914-D30AE8B5426F nightwatch/apps/iOSSampleApp.app
+          xcrun simctl install CFE57F9D-61FA-4D71-8914-D30AE8B5426F nightwatch/apps/wdiodemoapp.app
       
       - name: Run iOS Tests
         run: npm run iOSTest
